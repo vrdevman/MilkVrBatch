@@ -1,6 +1,8 @@
 # MilkVrBatch
 Android APK - Create batch .mvrl files for MilkVR playback through Universal Media Server DLNA
 
+Based off of my previous windows batch release (https://github.com/vrdevman/MilkVr-UMS-BatchMVRL)
+
 Note: This app parses HTML from the UMS web interface to locate all video files. With a couple tweaks it should also work for other dlna servers with a web interface that can be parsed easily. Any future changes made to the UMS web interface could affect this apps functionality. In the future I might convert this to fully browse DLNA using an Android DLNA api instead of parsing HTML, but it works with UMS now the way it is.
 
 This application requires Universal Media Server and the web interface running.
