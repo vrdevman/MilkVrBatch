@@ -11,11 +11,11 @@ in UMS android devices can be detected as chromeCast. Disable chromeCast rendere
 
 Required files:
 
-MilkVRBatch.apk
-MilkVR (Gear Vr app)
-Universal Media Server - http://www.universalmediaserver.com/ (current working version 6.2.0)
-Android DLNA App: Example BubbleUpnp (to initialize proper connection with Universal Media Server)
-  (https://play.google.com/store/apps/details?id=com.bubblesoft.android.bubbleupnp)
+1.  MilkVRBatch.apk
+2.  MilkVR (Gear Vr app)
+3.  Universal Media Server - http://www.universalmediaserver.com/ (current working version 6.2.0)
+4.  Android DLNA App: Example BubbleUpnp (to initialize proper connection with Universal Media Server)
+    (https://play.google.com/store/apps/details?id=com.bubblesoft.android.bubbleupnp)
 
 
 Steps:
@@ -31,10 +31,12 @@ Steps:
 9. Ensure DLNA Port is set (default 5001)
 10. click "Generate .mvrl.." button
 11. Files are now in sdcard/MilkVR
+ 
 12.
 THIS STEP MAY NOT BE REQUIRED. But is a fix to ensure playback works on MilkVR
-  a) Run BubbleUpnp.
-  b) Opening BubbleUpnp will initialize the proper settings between UMS and your android/IP for DLNA playback. You will see an android      renderer show up in your Universal Media Server list on the server. You can now leave BubbleUpnp open or close it
-  c) Final test - not needed: Open a video through BubbleUpnp + Any Video App will ensure playback works. Close video
 
-11. Start MilkVR and run .mvrl files from sideloaded
+  - Run BubbleUpnp.
+  - Opening BubbleUpnp will initialize the proper settings between UMS and your android/IP for DLNA playback. You will see an android      renderer show up in your Universal Media Server list on the server. You can now leave BubbleUpnp open or close it
+  - Final test - not needed: Open a video through BubbleUpnp + Any Video App will ensure playback works. Close video
+
+13.Start MilkVR and run .mvrl files from sideloaded
