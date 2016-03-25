@@ -19,6 +19,7 @@ Android DLNA App: Example BubbleUpnp (to initialize proper connection with Unive
 
 
 Steps:
+
 1. Install MilkVRBatch.apk app
 2. Install BubbleUpnp app from playstore (May not be required if step 12 isn't needed as FIX)
 3. Ensure UMS is running + web interface (http://www.universalmediaserver.com/)
