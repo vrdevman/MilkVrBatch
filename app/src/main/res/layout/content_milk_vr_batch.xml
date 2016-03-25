@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MilkVrBatch"
+    tools:showIn="@layout/activity_milk_vr_batch">
+
+    <TextView
+        android:textColor="#FFFF00"
+        android:background="#808080"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MilkVRBatch - UMS"
+        android:textSize="32sp"
+        android:id="@+id/textView2" />
+
+    <EditText
+        android:background="#FFFFFF"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/dlnaPortText"
+        android:text="Enter the DLNA port #"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:singleLine="true"
+        android:selectAllOnFocus="true" />
+
+    <TextView
+        android:textColor="#FFFF00"
+        android:background="#808080"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMS Web Folder"
+        android:id="@+id/textView"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="47dp" />
+
+    <TextView
+        android:textColor="#FFFF00"
+        android:background="#808080"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DLNA Port"
+        android:id="@+id/textView3"
+        android:layout_marginTop="52dp"
+        android:layout_below="@+id/addressText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Generate .mvrl and copy to MilkVR folder"
+        android:id="@+id/generate"
+        android:layout_below="@+id/dlnaPortText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="76dp" />
+
+    <EditText
+        android:background="#FFFFFF"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addressText"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Enter the &lt;Address>:&lt;Port>/&lt;Web Folder>  "
+        android:singleLine="true"
+        android:selectAllOnFocus="true" />
+
+</RelativeLayout>
