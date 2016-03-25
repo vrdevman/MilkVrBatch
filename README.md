@@ -27,8 +27,8 @@ Steps:
 3. Ensure UMS is running + web interface (http://www.universalmediaserver.com/)
 4. Setting in UMS Navigation Share/Settings : Disable 'Hide file extensions' (you want to know its a .mp4)
 5. Setting in UMS Navigation Share/Settings : Enable "hide Empty folder', 'hide the cache folder', 'hide the transcode folder', 'hide     the new media folder'
-6. connect to UMS web interface through android web browser (Default address= http://<serverIP>:9001/)
-7. Browse until you find the desired media folder (example: http://<serverIP>:9001/browse/2918) and copy URL
+6. connect to UMS web interface through android web browser (Default address= http://\<serverIP\>:9001/)
+7. Browse until you find the desired media folder (example: http://\<serverIP\>:9001/browse/2918) and copy URL
 8. Open MilkVRBatch android app copy/paste URL into app 
 9. Ensure DLNA Port is set (default 5001)
 10. click "Generate .mvrl.." button
