@@ -13,7 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -25,7 +27,14 @@ public class MilkVrBatch extends AppCompatActivity {
     String dlnaPort;
     String webFolder;
     String finalMsg;
+    boolean useThumbnails;
+    boolean useAudio;
+    boolean useHttp;
     EditText dlnaPortTextBox;
+    CheckBox thumbnailsCheckbox;
+    CheckBox audioCheckbox;
+    RadioButton httpRadioButton;
+    RadioButton jpgRadioButton;
     EditText addressTextBox;
     private static Context mContext;
 
@@ -49,12 +58,22 @@ public class MilkVrBatch extends AppCompatActivity {
 
         dlnaPortTextBox = (EditText) findViewById(R.id.dlnaPortText);
         addressTextBox = (EditText) findViewById(R.id.addressText);
+        thumbnailsCheckbox = (CheckBox) findViewById(R.id.thumbnails);
+        audioCheckbox = (CheckBox) findViewById(R.id.audioTags);
+        httpRadioButton = (RadioButton) findViewById(R.id.httpRadioButton);
+        jpgRadioButton = (RadioButton) findViewById(R.id.jpgRadioButton);
 
         if (dlnaPort != null) {
             dlnaPortTextBox.setText(dlnaPort);}
 
         if (webFolder != null) {
             addressTextBox.setText(webFolder);}
+
+        thumbnailsCheckbox.setChecked(useThumbnails);
+        httpRadioButton.setChecked(useHttp);
+        jpgRadioButton.setChecked(!useHttp);
+        httpRadioButton.setEnabled(useThumbnails);
+        jpgRadioButton.setEnabled(useThumbnails);
 
         Button generate = (Button) findViewById(R.id.generate);
         if (generate != null) {
@@ -68,6 +87,10 @@ public class MilkVrBatch extends AppCompatActivity {
                         webFolder = addressTextBox.getText().toString().trim();
                     }
 
+                    useThumbnails = thumbnailsCheckbox.isChecked();
+                    useAudio = audioCheckbox.isChecked();
+                    useHttp = httpRadioButton.isChecked();
+
                     SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
                     SharedPreferences.Editor prefsEditor = mPrefs.edit();
                     Gson gson = new Gson();
@@ -75,6 +98,9 @@ public class MilkVrBatch extends AppCompatActivity {
                     String webTag = gson.toJson(webFolder);
                     prefsEditor.putString("dlnaPort", dlnaTag);
                     prefsEditor.putString("webFolder", webTag);
+                    prefsEditor.putBoolean("useThumbnails", useThumbnails);
+                    prefsEditor.putBoolean("useAudio", useAudio);
+                    prefsEditor.putBoolean("useHttp", useHttp);
                     prefsEditor.commit();
 
                     final ProgressDialog pd = new ProgressDialog(MilkVrBatch.this);
@@ -87,7 +113,7 @@ public class MilkVrBatch extends AppCompatActivity {
                         @Override
                         public void run() {
                             try {
-                                Utility utility = new Utility(dlnaPort, webFolder);
+                                Utility utility = new Utility(dlnaPort, webFolder, useThumbnails, useAudio, useHttp);
                                 finalMsg = utility.run();
                                 pd.dismiss();
                                 runOnUiThread(new Runnable() {
@@ -126,6 +152,41 @@ public class MilkVrBatch extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onRadioButtonClicked(View view) {
+        RadioButton button = (RadioButton) view;
+        boolean checked = button.isChecked();
+
+        switch(view.getId()) {
+            case R.id.httpRadioButton:
+                if (checked)
+                {
+                    httpRadioButton.setChecked(true);
+                    jpgRadioButton.setChecked(false);
+                }
+                    break;
+            case R.id.jpgRadioButton:
+                if (checked)
+                {
+                    httpRadioButton.setChecked(false);
+                    jpgRadioButton.setChecked(true);
+                }
+                    break;
+        }
+    }
+
+    public void thumbnailClicked(View view) {
+        boolean checked = thumbnailsCheckbox.isChecked();
+                if (checked)
+                {
+                    httpRadioButton.setEnabled(true);
+                    jpgRadioButton.setEnabled(true);
+                }
+               else{
+                    httpRadioButton.setEnabled(false);
+                    jpgRadioButton.setEnabled(false);
+                }
+    }
+
     public void loadProperties() throws IOException, SecurityException {
         SharedPreferences  mPrefs = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
@@ -134,6 +195,10 @@ public class MilkVrBatch extends AppCompatActivity {
         String webTag = mPrefs.getString("webFolder", "");
         dlnaPort = gson.fromJson(dlnaTag, String.class);
         webFolder = gson.fromJson(webTag, String.class);
+        useThumbnails = mPrefs.getBoolean("useThumbnails", true);
+        useAudio = mPrefs.getBoolean("useAudio", true);
+        useHttp = mPrefs.getBoolean("useHttp", true);
+
         if (dlnaPort == null || dlnaPort.trim().equals("") ) {dlnaPort = "5001";} else{dlnaPort.trim();}
         if (webFolder == null || webFolder.trim().equals("")) {webFolder = "http://192.168.1.100:9001/browse/55";}else{webFolder.trim();}
     }

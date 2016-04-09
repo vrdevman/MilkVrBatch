@@ -30,11 +30,10 @@
         android:ems="10"
         android:id="@+id/dlnaPortText"
         android:text="Enter the DLNA port #"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:singleLine="true"
-        android:selectAllOnFocus="true" />
+        android:selectAllOnFocus="true"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:textColor="#FFFF00"
@@ -45,10 +44,9 @@
         android:layout_height="wrap_content"
         android:text="UMS Web Folder"
         android:id="@+id/textView"
+        android:layout_marginTop="33dp"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="47dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:textColor="#FFFF00"
@@ -59,9 +57,8 @@
         android:layout_height="wrap_content"
         android:text="DLNA Port"
         android:id="@+id/textView3"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="33dp"
         android:layout_below="@+id/addressText"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -70,10 +67,9 @@
         android:textStyle="bold"
         android:text="Generate .mvrl and copy to MilkVR folder"
         android:id="@+id/generate"
-        android:layout_below="@+id/dlnaPortText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="76dp" />
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/jpgRadioButton"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:background="#FFFFFF"
@@ -81,11 +77,62 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addressText"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:text="Enter the &lt;Address>:&lt;Port>/&lt;Web Folder>  "
         android:singleLine="true"
-        android:selectAllOnFocus="true" />
+        android:selectAllOnFocus="true"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:text="Use Thumbnails"
+        android:id="@+id/thumbnails"
+        android:checked="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:onClick="thumbnailClicked"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:text="Use Audio Tags (5.1 etc..)"
+        android:checked="true"
+        android:id="@+id/audioTags"
+        android:layout_above="@+id/thumbnails"
+        android:layout_alignParentStart="true"
+        />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HTTP thumbnails (slower loading in MilkVR)"
+        android:background="#FFFFFF"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:id="@+id/httpRadioButton"
+        android:checked="false"
+        android:textSize="11sp"
+        android:onClick="onRadioButtonClicked"
+        android:layout_below="@+id/thumbnails"
+        android:layout_centerHorizontal="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Copy JPG Thumbnails to sdcard \n(slower to generate .mvrl)"
+        android:background="#FFFFFF"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:id="@+id/jpgRadioButton"
+        android:checked="false"
+        android:textSize="11sp"
+        android:onClick="onRadioButtonClicked"
+        android:layout_below="@+id/httpRadioButton"
+        android:layout_alignStart="@+id/httpRadioButton" />
+
 
 </RelativeLayout>
