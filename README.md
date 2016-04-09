@@ -15,7 +15,7 @@ Required files:
 
 1.  MilkVRBatch.apk
 2.  MilkVR (Gear Vr app)
-3.  Universal Media Server - http://www.universalmediaserver.com/ (current working version 6.2.0)
+3.  Universal Media Server - http://www.universalmediaserver.com/ (current working version 6.2.2)
 4.  Android DLNA App: Example BubbleUpnp (to initialize proper connection with Universal Media Server)
     (https://play.google.com/store/apps/details?id=com.bubblesoft.android.bubbleupnp)
 
